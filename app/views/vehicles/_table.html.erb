@@ -1,0 +1,17 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>length_in_inches</th>
+      <th>type</th>
+      <!-- Add more headers as needed -->
+    </tr>
+  </thead>
+  <tbody>
+    <% vehicles.each do |vehicle| %>
+      <tr>
+        <td><%= vehicle.length_in_inches %></td>
+        <td><%= vehicle.vehicle_type %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

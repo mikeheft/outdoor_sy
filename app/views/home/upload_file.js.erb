@@ -1,0 +1,2 @@
+console.log("<%= j @vehicles.inspect %>")
+$('#vehicle-table').html("<%= escape_javascript render(partial: 'vehicles/table', locals: {vehicles: @vehicles})") %>
