@@ -1,7 +1,7 @@
 # typed: false
 # frozen_string_literal: true
 
-module Rubocop::InitAutoloader
+module RuboCop::InitAutoloader
 end
 
 # Load all Ruby files in the custom directory
