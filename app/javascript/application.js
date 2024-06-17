@@ -2,6 +2,3 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 import "./channels"
-import "channels"
-// import "@rails/ujs"
-// Rails.start()
