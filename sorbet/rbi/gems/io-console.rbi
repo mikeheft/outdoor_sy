@@ -2,6 +2,7 @@
 #   srb rbi gems
 
 # typed: false
+
 #
 # If you would like to make changes to this file, great! Please create the gem's shim here:
 #
@@ -44,10 +45,12 @@ class IO
   def winsize; end
   def winsize=(arg0); end
 end
+
 module InvalidName_IO__generic_readable_15
   def getch(*arg0); end
   def getpass(*arg0); end
 end
+
 class IO::ConsoleMode
   def echo=(arg0); end
   def initialize_copy(arg0); end

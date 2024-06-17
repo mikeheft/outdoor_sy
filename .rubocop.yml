@@ -1,3 +1,5 @@
+inherit_from: .rubocop_todo.yml
+
 AllCops:
   Exclude:
     - db/migrate/**/*
@@ -14,6 +16,7 @@ AllCops:
 require:
   - rubocop-rails
   - rubocop-sorbet
+  - ./lib/rubocop/cop/custom/private_method_style
 
 Custom/PrivateMethodStyle:
   Enabled: true
@@ -26,6 +29,8 @@ Sorbet/EnforceSigilOrder:
   Enabled: false
 Style/AccessModifierDeclarations:
   EnforcedStyle: inline
+Style/ClassAndModuleChildren:
+  Enabled: false
 Style/Documentation:
   Enabled: false
 Style/Lambda:

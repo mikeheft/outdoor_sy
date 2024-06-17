@@ -2,6 +2,7 @@
 #   srb rbi gems
 
 # typed: false
+
 #
 # If you would like to make changes to this file, great! Please create the gem's shim here:
 #
