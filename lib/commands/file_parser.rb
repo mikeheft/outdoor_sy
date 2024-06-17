@@ -8,6 +8,7 @@ module Commands
 
     def parse
       delimiter = sniff_delimiter
+
       rows = file.split("\n")
       rows.each do |row|
         split_row = row.split(delimiter)
