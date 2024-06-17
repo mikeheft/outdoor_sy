@@ -1,3 +1,5 @@
+inherit_from: .rubocop_todo.yml
+
 AllCops:
   Exclude:
     - db/migrate/**/*
@@ -14,7 +16,7 @@ AllCops:
 require:
   - rubocop-rails
   - rubocop-sorbet
-  - ./lib/rubocop/init_autoloader
+  - ./lib/rubocop/cop/custom/private_method_style
 
 Custom/PrivateMethodStyle:
   Enabled: true

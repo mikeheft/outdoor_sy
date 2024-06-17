@@ -4,7 +4,16 @@
 
 # typed: false
 
-module ::Anonymous_Delegator_20; end
-module ::Anonymous_Delegator_6; end
-module ActionMailer::Base::HelperMethods::Anonymous_Module_25; end
-module ActionView::TestCase::TestController::Anonymous_Module_38; end
+module ::ActionController::Base; end
+module ::ActionMailer::Base; end
+module ::ActiveJob::Base; end
+module ::ActiveRecord::Base; end
+module ::ActiveSupport::Logger; end
+module ::ActiveSupport::TaggedLogging; end
+module ::Concurrent; end
+module ::Rails; end
+module ApplicationCable::ActionCable::Channel::Base; end
+module ApplicationCable::ActionCable::Connection::Base; end
+module OutdoorSy::Rails::Application; end
+module RuboCop::Cop::Custom::Base; end
+module RuboCop::Cop::Custom::PrivateMethodStyle::Rails; end
