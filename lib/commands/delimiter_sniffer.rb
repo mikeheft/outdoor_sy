@@ -11,15 +11,15 @@ module Commands
       '";"'
     ].freeze
 
-    def self.call(path)
-      new(path:).find_delimiter
+    def self.call(file)
+      new(file:).find_delimiter
     end
 
-    attr_reader :path
-    private :path
+    attr_reader :file
+    private :file
 
-    private def initialize(path:)
-      @path = path
+    private def initialize(file:)
+      @file = file
     end
 
     def find_delimiter
@@ -54,11 +54,11 @@ module Commands
     end
 
     private def first
-      @first ||= file.first
+      @first ||= split_file.first
     end
 
-    private def file
-      @file ||= File.open(path)
+    private def split_file
+      @split_file ||= file.split("\n")
     end
   end
 end

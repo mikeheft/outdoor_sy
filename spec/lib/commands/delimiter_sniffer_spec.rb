@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe Commands::DelimiterSniffer do
   describe '.call' do
-    subject(:find_delimiter) { described_class.call(path) }
+    subject(:find_delimiter) { described_class.call(File.read(path)) }
 
     let(:path) { './spec/fixtures/vehicle_info_with_commas.txt' }
 
@@ -30,14 +32,14 @@ describe Commands::DelimiterSniffer do
 
     context 'when empty file' do
       it 'raises error' do
-        expect(File).to receive(:open) { [] }
+        expect_any_instance_of(described_class).to receive(:split_file).and_return([])
         expect { find_delimiter }.to raise_error(described_class::EmptyFile)
       end
     end
 
     context 'when no column separator is found' do
       it 'raises error' do
-        expect(File).to receive(:open) { [''] }
+        expect_any_instance_of(described_class).to receive(:split_file).and_return([''])
         expect { find_delimiter }.to raise_error(described_class::NoColumnSeparatorFound)
       end
     end
