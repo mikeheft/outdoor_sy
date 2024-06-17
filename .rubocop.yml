@@ -1,0 +1,22 @@
+AllCops:
+  Exclude:
+    - db/migrate/**/*
+    - db/schema.rb
+    - config/**/*
+    - script/**/*
+    - bin/**/*
+    - app/admin/**/*
+    - app/channels/**/*
+    - app/jobs/**/*
+    - node_modules/**/*
+    - Rakefile
+    - config.ru
+require:
+  - rubocop-rails
+  - rubocop-sorbet
+
+Custom/PrivateMethodStyle:
+  Enabled: true
+Layout/IndentationWidth:
+  Enabled: true
+  Width: 2
