@@ -5,7 +5,7 @@
 #
 #   https://github.com/sorbet/sorbet-typed/edit/master/lib/actionview/all/actionview.rbi
 #
-# typed: false
+# typed: strong
 
 module ActionView
   class ActionViewError < StandardError; end
@@ -21,10 +21,11 @@ module ActionView
     class Error < ActionViewError; end
   end
 
-  TemplateError = T.type_alias { Template::Error }
+  TemplateError = T.type_alias {Template::Error}
 
   class SyntaxErrorInTemplate < Template::Error; end
 end
+
 
 ActionView::Base::NULL = T.let(T.unsafe(nil), Object)
 
