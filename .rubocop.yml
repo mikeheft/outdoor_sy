@@ -25,6 +25,9 @@ Layout/IndentationWidth:
   Width: 2
 Lint/UnusedMethodArgument:
   AutoCorrect: false
+Metrics/BlockLength:
+  Exclude:
+    - spec/**/*.rb
 Sorbet/EnforceSigilOrder:
   Enabled: false
 Style/AccessModifierDeclarations:
