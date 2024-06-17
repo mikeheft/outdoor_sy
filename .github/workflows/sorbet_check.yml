@@ -20,4 +20,4 @@ jobs:
           bundle install --jobs 4 --retry 3
 
       - name: Run Sorbet
-        run: bundle exec srb tc
+        run: bundle exec srb tc -q
