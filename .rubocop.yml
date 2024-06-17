@@ -11,5 +11,7 @@ AllCops:
     - node_modules/**/*
     - Rakefile
     - config.ru
+Style/Documentation:
+  Enabled: false
 require:
   - rubocop-rails
