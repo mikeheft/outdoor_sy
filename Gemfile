@@ -44,6 +44,7 @@ gem 'tzinfo-data', platforms: %i[windows jruby]
 gem 'bootsnap', require: false
 
 gem 'rubocop-rails', require: false
+gem 'rubocop-sorbet'
 gem 'sorbet-runtime'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
