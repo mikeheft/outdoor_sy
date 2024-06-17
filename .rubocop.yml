@@ -27,6 +27,8 @@ Sorbet/EnforceSigilOrder:
   Enabled: false
 Style/AccessModifierDeclarations:
   EnforcedStyle: inline
+Style/ClassAndModuleChildren:
+  Enabled: false
 Style/Documentation:
   Enabled: false
 Style/Lambda:
