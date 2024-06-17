@@ -1,0 +1,15 @@
+AllCops:
+  Exclude:
+    - db/migrate/**/*
+    - db/schema.rb
+    - config/**/*
+    - script/**/*
+    - bin/**/*
+    - app/admin/**/*
+    - app/channels/**/*
+    - app/jobs/**/*
+    - node_modules/**/*
+    - Rakefile
+    - config.ru
+require:
+  - rubocop-rails
