@@ -5,7 +5,7 @@
 #
 #   https://github.com/sorbet/sorbet-typed/edit/master/lib/actionpack/all/actionpack.rbi
 #
-# typed: strong
+# typed: false
 
 # https://github.com/rails/rails/blob/5-2-stable/actionpack/lib/action_controller.rb
 module ActionController; end
@@ -276,7 +276,7 @@ module ActionController::RequestForgeryProtection
   def protect_against_forgery?; end
 
   # https://github.com/rails/rails/blob/5-2-stable/actionpack/lib/action_controller/metal/request_forgery_protection.rb#L307
-  sig { params(form_options: T::Hash[T.untyped, T.untyped]).returns(String)  }
+  sig { params(form_options: T::Hash[T.untyped, T.untyped]).returns(String) }
   def form_authenticity_token(form_options: {}); end
 end
 
@@ -294,7 +294,9 @@ module ActionController::RequestForgeryProtection::ClassMethods
       null_session: T.untyped
     ).void
   end
-  def protect_from_forgery(only: nil, except: nil, if: nil, unless: nil, prepend: false, with: nil, exception: nil, reset_session: nil, null_session: nil); end
+  def protect_from_forgery(only: nil, except: nil, if: nil, unless: nil, prepend: false, with: nil, exception: nil,
+                           reset_session: nil, null_session: nil)
+  end
 
   sig { params(options: T::Hash[T.untyped, T.untyped]).void }
   def skip_forgery_protection(options = T.unsafe(nil)); end
@@ -611,15 +613,15 @@ class ActionController::Parameters
 
   sig do
     params(
-      key: T.any(String, Symbol),
+      key: T.any(String, Symbol)
     ).returns(
       T.nilable(
         T.any(
           String,
           Numeric,
-          ActionController::Parameters,
-        ),
-      ),
+          ActionController::Parameters
+        )
+      )
     )
   end
   def [](key); end
@@ -629,15 +631,15 @@ class ActionController::Parameters
       key: T.any(
         String,
         Symbol,
-        T::Array[T.any(String, Symbol)],
-      ),
+        T::Array[T.any(String, Symbol)]
+      )
     ).returns(
       T.any(
         String,
         Numeric,
         T::Array[T.untyped],
-        ActionController::Parameters,
-      ),
+        ActionController::Parameters
+      )
     )
   end
   def require(key); end
@@ -648,15 +650,15 @@ class ActionController::Parameters
       key: T.any(
         String,
         Symbol,
-        T::Array[T.any(String, Symbol)],
-      ),
+        T::Array[T.any(String, Symbol)]
+      )
     ).returns(
       T.any(
         String,
         Numeric,
         T::Array[T.untyped],
-        ActionController::Parameters,
-      ),
+        ActionController::Parameters
+      )
     )
   end
   def required(key); end
@@ -1027,15 +1029,15 @@ module ActionDispatch::Routing::Mapper::Resources
       path_names: T.untyped,
       path: T.untyped,
       only: T.nilable(T.any(
-        T::Array[T.any(String, Symbol)],
-        String,
-        Symbol
-      )),
+                        T::Array[T.any(String, Symbol)],
+                        String,
+                        Symbol
+                      )),
       except: T.nilable(T.any(
-        T::Array[T.any(String, Symbol)],
-        String,
-        Symbol
-      )),
+                          T::Array[T.any(String, Symbol)],
+                          String,
+                          Symbol
+                        )),
       shallow: T::Boolean,
       shallow_path: T.nilable(String),
       shallow_prefix: T.nilable(String),
@@ -1072,15 +1074,15 @@ module ActionDispatch::Routing::Mapper::Resources
       path_names: T.untyped,
       path: T.untyped,
       only: T.nilable(T.any(
-        T::Array[T.any(String, Symbol)],
-        String,
-        Symbol
-      )),
+                        T::Array[T.any(String, Symbol)],
+                        String,
+                        Symbol
+                      )),
       except: T.nilable(T.any(
-        T::Array[T.any(String, Symbol)],
-        String,
-        Symbol
-      )),
+                          T::Array[T.any(String, Symbol)],
+                          String,
+                          Symbol
+                        )),
       shallow: T::Boolean,
       shallow_path: T.nilable(String),
       shallow_prefix: T.nilable(String),

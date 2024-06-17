@@ -5,7 +5,7 @@
 #
 #   https://github.com/sorbet/sorbet-typed/edit/master/lib/thor/all/thor.rbi
 #
-# typed: strong
+# typed: false
 
 class Thor
   include(::Thor::Base)
@@ -361,7 +361,7 @@ module Thor::Base::ClassMethods
 end
 
 class Thor::Command < ::Struct
-  Elem = type_member {{fixed: T.untyped}}
+  Elem = type_member { { fixed: T.untyped } }
 
   def initialize(name, description, long_description, usage, options = T.unsafe(nil)); end
 
@@ -392,9 +392,9 @@ module Thor::CoreExt
 end
 
 class Thor::CoreExt::HashWithIndifferentAccess < ::Hash
-  K = type_member {{fixed: T.untyped}}
-  V = type_member {{fixed: T.untyped}}
-  Elem = type_member {{fixed: T.untyped}}
+  K = type_member { { fixed: T.untyped } }
+  V = type_member { { fixed: T.untyped } }
+  Elem = type_member { { fixed: T.untyped } }
 
   def initialize(hash = T.unsafe(nil)); end
 
@@ -420,7 +420,7 @@ end
 Thor::Correctable = DidYouMean::Correctable
 
 class Thor::DynamicCommand < ::Thor::Command
-  Elem = type_member {{fixed: T.untyped}}
+  Elem = type_member { { fixed: T.untyped } }
 
   def initialize(name, options = T.unsafe(nil)); end
 
@@ -438,7 +438,6 @@ class Thor::Group
   include(::Thor::Shell)
   extend(::Thor::Base::ClassMethods)
   extend(::Thor::Invocation::ClassMethods)
-
 
   protected
 
@@ -473,7 +472,7 @@ end
 Thor::HELP_MAPPINGS = T.let(T.unsafe(nil), T::Array[T.untyped])
 
 class Thor::HiddenCommand < ::Thor::Command
-  Elem = type_member {{fixed: T.untyped}}
+  Elem = type_member { { fixed: T.untyped } }
 
   def hidden?; end
 end
@@ -616,7 +615,9 @@ end
 Thor::Option::VALID_TYPES = T.let(T.unsafe(nil), T::Array[T.untyped])
 
 class Thor::Options < ::Thor::Arguments
-  def initialize(hash_options = T.unsafe(nil), defaults = T.unsafe(nil), stop_on_unknown = T.unsafe(nil), disable_required_check = T.unsafe(nil)); end
+  def initialize(hash_options = T.unsafe(nil), defaults = T.unsafe(nil), stop_on_unknown = T.unsafe(nil),
+                 disable_required_check = T.unsafe(nil))
+  end
 
   def check_unknown!; end
   def parse(args); end
