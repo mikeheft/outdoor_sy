@@ -1,8 +1,9 @@
 # typed: false
+# frozen_string_literal: true
 
 require "spec_helper"
 
-describe Commands::DelimeterSniffer do
+describe Commands::DelimiterSniffer do
   describe ".find" do
     subject(:find_delimeter) { described_class.find_delimeter(path) }
 

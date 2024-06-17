@@ -2,7 +2,7 @@
 # frozen_string_literal: true
 
 module Commands
-  class DelimeterSniffer
+  class DelimiterSniffer
     NoColumnSeparatorFound = Class.new(StandardError)
     EmptyFile = Class.new(StandardError)
 
