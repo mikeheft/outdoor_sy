@@ -5,7 +5,7 @@
 #
 #   https://github.com/sorbet/sorbet-typed/edit/master/lib/activestorage/all/activestorage.rbi
 #
-# typed: false
+# typed: strong
 
 module ActiveStorage
   sig { returns(Gem::Version) }
@@ -19,7 +19,7 @@ class ActiveStorage::Attached::One
   # These aren't technically included, but Attached::One delegates any missing
   # methods to Attachment, which in turn delegates to Blob. This is essentially
   # a hack to make it easier to maintain the ActiveStorage signatures. We can't
-  # include Blob directly because it's a class, so `include`ing it doesn't work.
+  #include Blob directly because it's a class, so `include`ing it doesn't work.
   include ActiveStorage::Blob::Analyzable
   include ActiveStorage::Blob::Identifiable
   include ActiveStorage::Blob::Representable
