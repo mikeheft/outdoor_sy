@@ -44,5 +44,12 @@ describe Commands::DelimeterSniffer do
         expect { find_delimeter }.to raise_error(described_class::NoColumnSeparatorFound)
       end
     end
+
+    context "when possible mixed delimieter" do
+      let(:path) { "./spec/fixtures/vehicle_info_with_pipe_separator_with_commas.txt" }
+      it "returns separator" do
+        expect(find_delimeter).to eq("|")
+      end
+    end
   end
 end
