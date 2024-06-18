@@ -5,7 +5,6 @@ RSpec.describe 'home/index', type: :feature do
     it 'populate table' do
       visit root_path
       expect(page).to have_content('Outdoor.sy')
-      puts page.body
 
       attach_file('file', Rails.root.join('spec', 'fixtures', 'vehicle_info_with_commas.txt'))
       click_button 'Upload'
