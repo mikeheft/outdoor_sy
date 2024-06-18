@@ -7,7 +7,8 @@ This is a basic Ruby on Rails application to import and sort users and their veh
 - Ruby Version (>= 3.3.0)
 - Rails Version (>= 7.1.3.4 )
 - Node.js (>= 18.0.0)
-- Yarm (>= 1.22.19)
+- Yarn (>= 1.22.19)
+- PostgreSQL 16.1
 
 ## Getting Started
 
