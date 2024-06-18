@@ -10,5 +10,7 @@ class CreateVehicles < ActiveRecord::Migration[7.1]
 
       t.timestamps
     end
+
+    add_index :vehicles, [:name, :owner_id], unique: true
   end
 end

@@ -4,6 +4,7 @@ class Vehicle < ApplicationRecord
   belongs_to :owner
 
   validates :name, :vehicle_type, :length_in_inches, presence: true
+  validates :name, uniqueness: { scope: :owner_id }
 
   filterrific(default_filter_params: { sorted_by: "owner_name_asc" }, available_filters: [:sorted_by])
 
