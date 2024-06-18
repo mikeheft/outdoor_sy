@@ -1,6 +1,8 @@
 class Vehicle < ApplicationRecord
   belongs_to :owner
 
+  validates :name, :vehicle_type, :length_in_inches, presence: true
+
   filterrific(default_filter_params: { sorted_by: 'owner_name_asc' }, available_filters: [:sorted_by])
 
   scope :by_owner_name, -> { includes(:owner).order('owners.last_name, owners.first_name') }
