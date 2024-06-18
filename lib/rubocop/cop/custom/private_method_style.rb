@@ -13,18 +13,6 @@ module RuboCop
         MSG_INSTANCE = "Use `private def` for instance methods."
         MSG_CLASS = "Use `private_class_method def self` for class methods."
 
-        # def on_send(node)
-        #   puts "Checking method: #{node.method_name}"
-        #   return unless node.command?(:private)
-
-        #   method_def_node = node.parent
-
-        #   if instance_method?(method_def_node)
-        #     add_offense(method_def_node, message: MSG_INSTANCE)
-        #   elsif class_method?(method_def_node)
-        #     add_offense(method_def_node, message: MSG_CLASS)
-        #   end
-        # end
         def on_def(node)
           method_name = node.children[0]&.to_s
 
