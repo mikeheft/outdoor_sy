@@ -1,16 +1,22 @@
 <table class="table">
   <thead>
     <tr>
-      <th>length_in_inches</th>
-      <th>type</th>
+      <th>Owner Name</th>
+      <th>Owner Email</th>
+      <th>Vehicle Name</th>
+      <th>Vehicle Type</th>
+      <th>Vehicle Length</th>
       <!-- Add more headers as needed -->
     </tr>
   </thead>
   <tbody>
     <% vehicles.each do |vehicle| %>
       <tr>
-        <td><%= vehicle.length_in_inches %></td>
+        <td><%= vehicle.owner_name %></td>
+        <td><%= vehicle.owner_email %></td>
+        <td><%= vehicle.name %></td>
         <td><%= vehicle.vehicle_type %></td>
+        <td><%= vehicle.formatted_length %></td>
       </tr>
     <% end %>
   </tbody>

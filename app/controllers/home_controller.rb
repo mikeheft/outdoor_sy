@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-    @vehicles = Vehicle.includes(:owner)
+    @vehicles = Vehicle.includes(:owner).decorate
   end
 
   def upload_file
@@ -9,7 +9,7 @@ class HomeController < ApplicationController
 
       # Process the file (e.g., parse CSV, import data into the database)
       Commands::FileParser.call(file_data)
-      @vehicles = Vehicle.includes(:owner)
+      @vehicles = Vehicle.includes(:owner).decorate
       respond_to do |format|
         format.html { redirect_to root_path, notice: 'File uploaded successfully' }
         format.js # Renders create.js.erb
