@@ -322,7 +322,7 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   jquery-rails
-  jsbundling-rails (~> 1.3)
+  jsbundling-rails
   launchy
   pg (~> 1.1)
   pry-rails

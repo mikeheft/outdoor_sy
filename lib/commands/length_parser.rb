@@ -26,12 +26,12 @@ module Commands
     end
 
     private def parse_inches
-      @inches ||= length[2..-1]
+      @inches ||= length[2..]
       @parse_inches ||= @inches&.select(&select_integer)&.first
     end
 
     private def select_integer
-      ->(int_string) { int_string.to_i > 0 }
+      ->(int_string) { int_string.to_i.positive? }
     end
   end
 end
