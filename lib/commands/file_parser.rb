@@ -1,9 +1,14 @@
-# typed: true
+# typed: strict
 # frozen_string_literal: true
 
 module Commands
   # Parses uploaded file in order to create Owners and Vehicles
-  class FileParser
+  class FileParser < T::Struct
+    extend T::Sig
+
+    const :file, String
+
+    sig { params(file: String).void }
     def self.call(file)
       # In order to maintain a single caller for this file, we want to use private methods.
       # However, Rails does not play well with this pattern w/o the need for calling #send.
@@ -12,6 +17,7 @@ module Commands
       new(file:).send(:parse)
     end
 
+    sig { void }
     private def parse
       delimiter = sniff_delimiter
 
@@ -23,17 +29,16 @@ module Commands
       end
     end
 
+    sig { returns(String) }
     attr_reader :file
     private :file
 
-    private def initialize(file:)
-      @file = file
-    end
-
+    sig { returns(String) }
     private def sniff_delimiter
-      @sniff_delimiter ||= DelimiterSniffer.call(file)
+      @sniff_delimiter ||= T.let(DelimiterSniffer.call(file), T.nilable(String))
     end
 
+    sig { params(result: SplitResult).returns(Owner) }
     private def create_owner(result:)
       Owner.find_or_create_by(email: result.email) do |owner|
         owner.first_name = result.first_name
@@ -41,6 +46,7 @@ module Commands
       end
     end
 
+    sig { params(owner: Owner, result: SplitResult).returns(Vehicle) }
     private def create_owner_vehicles(owner:, result:)
       owner.vehicles.find_or_create_by(name: result.name) do |vehicle|
         vehicle.vehicle_type = result.vehicle_type

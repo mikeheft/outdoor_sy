@@ -1,7 +1,9 @@
-# typed: true
+# typed: strict
 # frozen_string_literal: true
 
 class Vehicle < ApplicationRecord
+  extend T::Sig
+
   belongs_to :owner
 
   validates :name, :vehicle_type, :length_in_inches, presence: true
@@ -25,6 +27,7 @@ class Vehicle < ApplicationRecord
     end
   }
 
+  sig { returns(T::Array[T::Array[String]]) }
   def self.options_for_sorted_by
     [
       ["Owner Name ASC", "owner_name_asc"],

@@ -1,4 +1,4 @@
-# typed: true
+# typed: strict
 # frozen_string_literal: true
 
 class Owner < ApplicationRecord
@@ -10,6 +10,7 @@ class Owner < ApplicationRecord
   validates :email, format: { with: /\A\S+@.+\.\S+\z/ }
   validates :email, uniqueness: true
 
+  sig { returns(String) }
   def full_name
     "#{first_name.capitalize} #{last_name.capitalize}"
   end
