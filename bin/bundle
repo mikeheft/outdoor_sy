@@ -9,6 +9,9 @@
 #
 
 require "rubygems"
+require 'active_support'
+require 'active_support/core_ext'
+
 
 m = Module.new do
   module_function def invoked_as_script?
