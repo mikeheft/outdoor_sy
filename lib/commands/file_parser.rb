@@ -1,28 +1,24 @@
 # frozen_string_literal: true
 
 module Commands
+  # Parses uploaded file in order to create Owners and Vehicles
   class FileParser
     def self.call(file)
-      new(file:).parse
+      # In order to maintain a single caller for this file, we want to use private methods.
+      # However, Rails does not play well with this pattern w/o the need for calling #send.
+      # This is safe as we are not using metaprogramming for this call so no further validation is required
+      # that the method exists.
+      new(file:).send(:parse)
     end
 
-    def parse
+    private def parse
       delimiter = sniff_delimiter
 
       rows = file.split("\n")
       rows.each do |row|
-        split_row = row.split(delimiter)
-
-        first_name = split_row[0]
-        last_name = split_row[1]
-        email = split_row[2]
-        vehicle_type = split_row[3]
-        name = split_row[4]
-        length = parse_length(split_row[5])
-
-        owner = create_owner(first_name:, last_name:, email:)
-
-        create_owner_vehicles(owner:, name:, vehicle_type:, length:)
+        result = SplitResult.from_row(delimiter, row)
+        owner = create_owner(result:)
+        create_owner_vehicles(owner:, result:)
       end
     end
 
@@ -33,26 +29,21 @@ module Commands
       @file = file
     end
 
-    private def parse_length(length_str)
-      LengthParser.call(length_str)
-    end
-
     private def sniff_delimiter
       @sniff_delimiter ||= DelimiterSniffer.call(file)
     end
 
-    private def create_owner(first_name:, last_name:, email:)
-      Owner.find_or_create_by(email:) do |owner|
-        owner.first_name = first_name
-        owner.last_name = last_name
+    private def create_owner(result:)
+      Owner.find_or_create_by(email: result.email) do |owner|
+        owner.first_name = result.first_name
+        owner.last_name = result.last_name
       end
     end
 
-    private def create_owner_vehicles(owner:, name:, vehicle_type:, length:)
-      owner.vehicles.find_or_create_by(name:) do |vehicle|
-        vehicle.name = name
-        vehicle.vehicle_type = vehicle_type
-        vehicle.length_in_inches = length
+    private def create_owner_vehicles(owner:, result:)
+      owner.vehicles.find_or_create_by(name: result.name) do |vehicle|
+        vehicle.vehicle_type = result.vehicle_type
+        vehicle.length_in_inches = result.length
       end
     end
   end
