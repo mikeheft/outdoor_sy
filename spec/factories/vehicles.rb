@@ -1,3 +1,4 @@
+# typed: true
 FactoryBot.define do
   factory :vehicle do
     name { "MyString" }

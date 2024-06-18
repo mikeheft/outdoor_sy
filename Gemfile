@@ -52,6 +52,7 @@ gem "jquery-rails"
 gem "jsbundling-rails"
 gem "rubocop", require: false
 gem "rubocop-rails"
+gem "sorbet-rails"
 gem "sorbet-runtime"
 gem "will_paginate"
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]

@@ -350,7 +350,7 @@ class ActionText::EncryptedRichText
 
     # This method is created by ActiveRecord on the `ActionText::RichText` class because it declared `has_many :embeds_attachments`.
     # 🔗 [Rails guide for `has_many` association](https://guides.rubyonrails.org/association_basics.html#the-has-many-association)
-    sig { returns(ActiveRecord::Associations::CollectionProxy) }
+    sig { returns(ActiveRecord::Associations::CollectionProxy[T.untyped]) }
     def embeds_attachments; end
 
     sig { params(value: T::Enumerable[T.untyped]).void }
@@ -364,7 +364,7 @@ class ActionText::EncryptedRichText
 
     # This method is created by ActiveRecord on the `ActionText::RichText` class because it declared `has_many :embeds_blobs, through: :embeds_attachments`.
     # 🔗 [Rails guide for `has_many_through` association](https://guides.rubyonrails.org/association_basics.html#the-has-many-through-association)
-    sig { returns(ActiveRecord::Associations::CollectionProxy) }
+    sig { returns(ActiveRecord::Associations::CollectionProxy[T.untyped]) }
     def embeds_blobs; end
 
     sig { params(value: T::Enumerable[T.untyped]).void }

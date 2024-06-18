@@ -1,9 +1,12 @@
+# typed: true
 # frozen_string_literal: true
 
 class Owner < ApplicationRecord
+  extend T::Sig
+
   has_many :vehicles, dependent: :destroy
 
-  validates :first_name, :last_name, :email, presence: true
+  validates :first_name, :last_name, :email, presence: { presence: true }
   validates :email, format: { with: /\A\S+@.+\.\S+\z/ }
   validates :email, uniqueness: true
 

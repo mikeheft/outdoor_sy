@@ -1,5 +1,6 @@
+# typed: true
 # frozen_string_literal: true
-
+require 'filterrific'
 class Vehicle < ApplicationRecord
   belongs_to :owner
 

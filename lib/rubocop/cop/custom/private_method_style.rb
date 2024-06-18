@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-# typed: false
+# typed: true
 
 require "rubocop"
 
@@ -18,7 +18,7 @@ module RuboCop
 
           return unless class_method_definition?(node)
 
-          Rails.logger.debug "Checking method: #{method_name}"
+          ::Rails.logger.debug "Checking method: #{method_name}"
           add_offense(node, message: MSG_CLASS)
         end
 

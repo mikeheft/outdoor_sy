@@ -347,7 +347,7 @@ class ActiveStorage::Blob
 
     # This method is created by ActiveRecord on the `ActiveStorage::Blob` class because it declared `has_many :attachments`.
     # 🔗 [Rails guide for `has_many` association](https://guides.rubyonrails.org/association_basics.html#the-has-many-association)
-    sig { returns(ActiveRecord::Associations::CollectionProxy) }
+    sig { returns(ActiveRecord::Associations::CollectionProxy[T.untyped]) }
     def attachments; end
 
     sig { params(value: T::Enumerable[T.untyped]).void }
@@ -403,7 +403,7 @@ class ActiveStorage::Blob
 
     # This method is created by ActiveRecord on the `ActiveStorage::Blob` class because it declared `has_many :variant_records`.
     # 🔗 [Rails guide for `has_many` association](https://guides.rubyonrails.org/association_basics.html#the-has-many-association)
-    sig { returns(ActiveRecord::Associations::CollectionProxy) }
+    sig { returns(ActiveRecord::Associations::CollectionProxy[T.untyped]) }
     def variant_records; end
 
     sig { params(value: T::Enumerable[T.untyped]).void }
