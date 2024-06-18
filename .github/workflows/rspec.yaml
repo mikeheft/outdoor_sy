@@ -25,7 +25,7 @@ jobs:
 
       - uses: actions/setup-node@v1
         with:
-          node-version: "14.x"
+          node-version: "18.x"
           registry-url: "https://registry.npmjs.org"
 
       - name: Gem cache
@@ -57,8 +57,14 @@ jobs:
           path: ${{ steps.yarn-cache-dir.outputs.dir }}
           key: yarn-${{ hashFiles('**/yarn.lock') }}
 
+      - name: Install Nodemon
+        run: yarn global add nodemon
+
       - name: Yarn install
         run: yarn install
+
+      - name: Bundle CSS
+        run: ./bin/dev
 
       - name: Setup DB, Run tests
         env:
