@@ -21,6 +21,7 @@ cd outdoor_sy
 ```bash
 bundle install
 yarn install
+rails assets:precompile
 ```
 
 3. Set up database
