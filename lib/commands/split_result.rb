@@ -1,44 +1,56 @@
+# typed: strict
 # frozen_string_literal: true
 
 module Commands
-  class SplitResult
-    attr_reader :row
-    private :row
+  class SplitResult < T::Struct
+    extend T::Sig
 
+    const :delimiter, String
+    const :row, String
+
+    sig { params(delimiter: String, row: String).returns(SplitResult) }
     def self.from_row(delimiter, row)
-      new(delimiter, row)
+      new(delimiter:, row:)
     end
 
+    sig { returns(String) }
     def first_name
-      row[0]
+      split_row.fetch(0)
     end
 
+    sig { returns(String) }
     def last_name
-      row[1]
+      split_row.fetch(1)
     end
 
+    sig { returns(String) }
     def email
-      row[2]
+      split_row.fetch(2)
     end
 
+    sig { returns(String) }
     def vehicle_type
-      row[3]
+      split_row.fetch(3)
     end
 
+    sig { returns(String) }
     def name
-      row[4]
+      split_row.fetch(4)
     end
 
+    sig { returns(Integer) }
     def length
-      parse_length(row[5])
+      parse_length(split_row.fetch(5))
     end
 
-    private def initialize(delimiter, row)
-      @row = row.split(delimiter)
-    end
-
+    sig { params(length_str: String).returns(Integer) }
     private def parse_length(length_str)
       LengthParser.call(length_str)
+    end
+
+    sig { returns(T::Array[String]) }
+    private def split_row
+      @split_row ||= T.let(row.split(delimiter), T.nilable(T::Array[String]))
     end
   end
 end

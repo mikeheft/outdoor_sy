@@ -1,3 +1,4 @@
+# typed: true
 FactoryBot.define do
   factory :owner do
     first_name { "MyString" }

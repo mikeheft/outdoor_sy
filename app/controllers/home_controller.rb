@@ -1,3 +1,4 @@
+# typed: true
 # frozen_string_literal: true
 
 class HomeController < ApplicationController
@@ -14,7 +15,7 @@ class HomeController < ApplicationController
   def upload_file
     if upload_params[:file].present?
       Commands::FileParser.call(upload_params[:file].read)
-      @vehicles = Vehicle.includes(:owner).decorate
+      @vehicles = Vehicle.includes(:owner).create
       respond_to do |format|
         format.html { redirect_to root_path, notice: "File uploaded successfully" }
         format.js
