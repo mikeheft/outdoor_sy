@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class VehicleDecorator < ApplicationDecorator
   delegate_all
 

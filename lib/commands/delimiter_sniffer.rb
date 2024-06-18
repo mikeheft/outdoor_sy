@@ -18,10 +18,6 @@ module Commands
     attr_reader :file
     private :file
 
-    private def initialize(file:)
-      @file = file
-    end
-
     def find_delimiter
       raise EmptyFile unless first
 
@@ -30,7 +26,13 @@ module Commands
       delimiters[0]&.[](0)&.[](1)
     end
 
-    private def valid?
+    private
+
+    def initialize(file:)
+      @file = file
+    end
+
+    def valid?
       !delimiters.collect(&:last).reduce(:+).zero?
     end
 
@@ -38,26 +40,26 @@ module Commands
     # delimiters[0] #=> ["\";\"", 54]
     # delimiters[0][0] #=> "\",\""
     # delimiters[0][0][1] #=> ";"
-    private def delimiters
+    def delimiters
       @delimiters ||= COMMON_DELIMITERS.inject({}, &count).sort(&most_found)
     end
 
-    private def most_found
+    def most_found
       ->(a, b) { b[1] <=> a[1] }
     end
 
-    private def count
+    def count
       lambda { |hash, delimiter|
         hash[delimiter] = first&.count(delimiter)
         hash
       }
     end
 
-    private def first
+    def first
       @first ||= split_file.first
     end
 
-    private def split_file
+    def split_file
       @split_file ||= file.split("\n")
     end
   end

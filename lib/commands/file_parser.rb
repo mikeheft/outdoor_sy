@@ -29,26 +29,28 @@ module Commands
     attr_reader :file
     private :file
 
-    private def initialize(file:)
+    private
+
+    def initialize(file:)
       @file = file
     end
 
-    private def parse_length(length_str)
+    def parse_length(length_str)
       LengthParser.call(length_str)
     end
 
-    private def sniff_delimiter
+    def sniff_delimiter
       @sniff_delimiter ||= DelimiterSniffer.call(file)
     end
 
-    private def create_owner(first_name:, last_name:, email:)
+    def create_owner(first_name:, last_name:, email:)
       Owner.find_or_create_by(email:) do |owner|
         owner.first_name = first_name
         owner.last_name = last_name
       end
     end
 
-    private def create_owner_vehicles(owner:, name:, vehicle_type:, length:)
+    def create_owner_vehicles(owner:, name:, vehicle_type:, length:)
       owner.vehicles.find_or_create_by(name:) do |vehicle|
         vehicle.name = name
         vehicle.vehicle_type = vehicle_type

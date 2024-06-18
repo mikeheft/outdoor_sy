@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class HomeController < ApplicationController
   def index
     @filterrific = initialize_filterrific(
@@ -33,7 +35,9 @@ class HomeController < ApplicationController
     end
   end
 
-  private def upload_params
+  private
+
+  def upload_params
     params.permit(:file)
   end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Commands
   class LengthParser
     def self.call(length)
@@ -14,23 +16,25 @@ module Commands
     attr_reader :length
     private :length
 
-    private def initialize(length:)
+    private
+
+    def initialize(length:)
       @length = length.scan(/\d+|\D+/)
     end
 
     # Returns feet in inchest
-    private def parse_feet
+    def parse_feet
       @feet ||= length[0..1]
       @parse_feet ||= @feet.select(&select_integer)
       @parse_feet.first.to_i * 12
     end
 
-    private def parse_inches
+    def parse_inches
       @inches ||= length[2..]
       @parse_inches ||= @inches&.select(&select_integer)&.first
     end
 
-    private def select_integer
+    def select_integer
       ->(int_string) { int_string.to_i.positive? }
     end
   end
