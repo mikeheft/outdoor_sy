@@ -30,16 +30,16 @@ module Commands
     # Returns feet in inchest
     private def parse_feet
       @feet ||= length[0..1]
-      @parse_feet ||= @feet.select(&is_positive_int?)
+      @parse_feet ||= @feet.select(&positive_int?)
       @parse_feet.first.to_i * 12
     end
 
     private def parse_inches
       @inches ||= length[2..]
-      @parse_inches ||= @inches&.select(&is_positive_int?)&.first
+      @parse_inches ||= @inches&.select(&positive_int?)&.first
     end
 
-    private def is_positive_int?
+    private def positive_int?
       ->(int_string) { int_string.to_i.positive? }
     end
   end
