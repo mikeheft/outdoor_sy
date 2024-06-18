@@ -1,6 +1,20 @@
 class HomeController < ApplicationController
   def index
-    @vehicles = Vehicle.includes(:owner).decorate
+    @filterrific = initialize_filterrific(
+      Vehicle,
+      params[:filterrific],
+      select_options: { sorted_by: Vehicle.options_for_sorted_by },
+      persistence_id: 'shared_key',
+      default_filter_params: {},
+      available_filters: [:sorted_by],
+      ssanitize_params: true
+    ) || return
+
+    @vehicles = @filterrific.find.page(params[:page]).includes(:owner).decorate
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def upload_file

@@ -43,7 +43,9 @@ gem 'bootsnap', require: false
 gem 'database_cleaner'
 gem 'draper'
 gem 'figaro'
+gem 'filterrific'
 gem 'jquery-rails'
+gem 'will_paginate'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"

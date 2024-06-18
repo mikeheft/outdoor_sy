@@ -1,23 +1,32 @@
-<table class="table">
-  <thead>
-    <tr>
-      <th>Owner Name</th>
-      <th>Owner Email</th>
-      <th>Vehicle Name</th>
-      <th>Vehicle Type</th>
-      <th>Vehicle Length</th>
-      <!-- Add more headers as needed -->
-    </tr>
-  </thead>
-  <tbody>
-    <% vehicles.each do |vehicle| %>
+<div id="filterrific_results">
+   <div>
+    <%= page_entries_info vehiclesg %>
+  </div>
+  <table class="table">
+    <thead>
       <tr>
-        <td><%= vehicle.owner_name %></td>
-        <td><%= vehicle.owner_email %></td>
-        <td><%= vehicle.name %></td>
-        <td><%= vehicle.vehicle_type %></td>
-        <td><%= vehicle.formatted_length %></td>
+        <th> <%=filterrific_sorting_link(@filterrific, :owner_name)%></th>
+        <th>Owner Email</th>
+        <th>Vehicle Name</th>
+        <th><%=filterrific_sorting_link(@filterrific, :vehicle_type) %></th>
+        <th>Vehicle Length</th>
+        <!-- Add more headers as needed -->
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% vehicles.each do |vehicle| %>
+        <tr>
+          <td><%= vehicle.owner_name %></td>
+          <td><%= vehicle.owner_email %></td>
+          <td><%= vehicle.name %></td>
+          <td><%= vehicle.vehicle_type %></td>
+          <td><%= vehicle.formatted_length %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<% unless vehicles.empty? %>
+<%= will_paginate vehicles  %>
+<%end%>

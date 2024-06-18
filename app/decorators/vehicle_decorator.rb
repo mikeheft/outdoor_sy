@@ -1,4 +1,4 @@
-class VehicleDecorator < Draper::Decorator
+class VehicleDecorator < ApplicationDecorator
   delegate_all
 
   def owner_name
